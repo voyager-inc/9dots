@@ -1,0 +1,48 @@
+{
+    "UserAgent": "aws-amplify-cli/0.1.0",
+    "Version": "0.1.0",
+    "IdentityManager": {
+        "Default": {}
+    },
+    "AppSync": {
+        "Default": {
+            "ApiUrl": "https://xctefwf5wjednhssj7hnulwnwe.appsync-api.ap-northeast-1.amazonaws.com/graphql",
+            "Region": "ap-northeast-1",
+            "AuthMode": "AMAZON_COGNITO_USER_POOLS",
+            "ClientDatabasePrefix": "iremocon-g4-stg-api_AMAZON_COGNITO_USER_POOLS"
+        }
+    },
+    "CognitoUserPool": {
+        "Default": {
+            "PoolId": "ap-northeast-1_kzUz7jY2B",
+            "AppClientId": "57d22dc4fcm5s5g3odebjt8c3m",
+            "Region": "ap-northeast-1"
+        }
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "ap-northeast-1:3add6860-8430-43ba-96c8-a03b7d77e0db",
+                "Region": "ap-northeast-1"
+            }
+        }
+    },
+    "S3TransferUtility": {
+        "Default": {
+            "Bucket": "iremocon-g4-stg-userdata-bucket",
+            "Region": "ap-northeast-1"
+        }
+    },
+    "PinpointAnalytics": {
+        "Default": {
+            "AppId": "01503a76be81471393b9ebe281433c8f",
+            "Region": "ap-northeast-1"
+        }
+    },
+    "PinpointTargeting": {
+        "Default": {
+            "Region": "ap-northeast-1"
+        }
+    },
+    "AutoFlushEventsInterval": 10000
+}

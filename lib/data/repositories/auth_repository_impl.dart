@@ -1,5 +1,7 @@
+import 'package:injectable/injectable.dart';
 import 'package:ninedots/domain/repositories/index.dart';
 
+@Injectable(as: AuthRepository)
 class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl();
 
