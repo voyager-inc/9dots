@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:ninedots/presentation/pages/splash/presentation/screens/splash_screen.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: ".env.dev");
   runApp(const MyApp());
 }
 
