@@ -51,6 +51,7 @@ dependencies:
   json_annotation: ^4.8.1
   injectable: ^2.1.2
   auto_route: ^7.8.4
+  iphone_has_notch: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,7 @@ dev_dependencies:
   injectable_generator: ^2.1.6
   auto_route_generator: ^7.3.2
   analyzer: ^5.13.0
+  flutter_gen: ^5.4.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -80,3 +82,4 @@ flutter:
     - .env.prod
     - .env.staging
     - assets/
+    - assets/images/
