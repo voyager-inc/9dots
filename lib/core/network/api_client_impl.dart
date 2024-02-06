@@ -6,6 +6,7 @@ import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
+import 'package:ninedots/configs/app_config.dart';
 import 'package:ninedots/core/utils/app_exception.dart';
 import 'package:ninedots/data/models/response/response.dart';
 
@@ -14,24 +15,21 @@ import 'exception/api_handler_mixin.dart';
 
 @Injectable(as: ApiClient)
 class ApiClientImpl extends ApiClient with ExceptionHandlerMixin {
-  ApiClientImpl({required this.amplifyConfig}) {
-    configureAmplify();
-  }
-
-  final String amplifyConfig;
-
   final timeout = const Duration(seconds: 20);
 
   @override
-  Future<void> configureAmplify() async {
-    try {
+  Future<Either<AppException, bool>> configureAmplify() async {
+    final String amplifyConfig = await AppConfig.amplifyConfiguration();
+    return await handleVoidException(() async {
       if (!Amplify.isConfigured) {
-        await Amplify.addPlugins(
-            [AmplifyAuthCognito(), AmplifyStorageS3(), AmplifyAPI()]);
-
+        await Amplify.addPlugins([
+          AmplifyAuthCognito(),
+          AmplifyStorageS3(),
+          AmplifyAPI(),
+        ]);
         await Amplify.configure(amplifyConfig);
       }
-    } catch (e, s) {}
+    });
   }
   
   @override
@@ -61,6 +59,20 @@ class ApiClientImpl extends ApiClient with ExceptionHandlerMixin {
     () => Amplify.API.subscribe(
         GraphQLRequest<String>(document: document, variables: variables ?? {}), 
         onEstablished: onEstablished));
+
+    return res;
+  }
+
+  @override
+  Future<Either<AppException, dynamic>> fetchSession() async {
+    final res = await handleDynamicException(() async {
+      final session = await Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey)
+          .fetchAuthSession(
+            options: const FetchAuthSessionOptions(forceRefresh: true),
+          );
+      this.session = session;
+      return session;
+    });
 
     return res;
   }

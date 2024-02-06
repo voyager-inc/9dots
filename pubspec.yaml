@@ -36,12 +36,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   
   ## Amplify
-  amplify_flutter: ^1.0.0
-  amplify_auth_cognito: ^1.0.0
-  amplify_core: ^1.0.0
-  amplify_api: ^1.0.0
-  amplify_storage_s3: ^1.0.0
-  aws_signature_v4: 0.3.1+7
+  amplify_flutter: ^1.6.1
+  amplify_auth_cognito: ^1.6.2
+  amplify_core: ^1.6.3
+  amplify_api: ^1.6.2
+  amplify_storage_s3: ^1.6.2
+  aws_signature_v4: ^0.5.1
 
   ## Riverpod
   flutter_riverpod: ^2.3.7
@@ -91,8 +91,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - .env.dev
-    - .env.prod
-    - .env.staging
+    - .env
     - assets/
     - assets/images/
+    - lib/configs/amplify_configs/dev/
+    - lib/configs/amplify_configs/prod/
+    - lib/configs/amplify_configs/stg/

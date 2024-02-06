@@ -70,4 +70,58 @@ mixin ExceptionHandlerMixin on ApiClient {
           message: message, statusCode: statusCode, identifier: identifier,which: 'http'));
     }
   }
+
+  Future<Either<AppException, bool>> handleVoidException<T extends Object>(Future<void> Function() handler) async {
+    try {
+      await handler();
+      return const Right(true);
+    } catch (ex) {
+      String message = '';
+      String identifier = '';
+      int statusCode = 0;
+      switch (ex.runtimeType) {
+        case SocketException:
+          ex as SocketException;
+          message = 'unable to connect to the server.';
+          statusCode = 0;
+          identifier = 'Socket Exception ${ex.message}\n';
+          break;
+
+        default:
+          message = 'unknown error occurred';
+          statusCode = 0;
+          identifier = 'unknown error ${ex.toString()}\n';
+          break;
+      }
+      return Left(AppException(
+          message: message, statusCode: statusCode, identifier: identifier,which: 'http'));
+    }
+  }
+
+  Future<Either<AppException, dynamic>> handleDynamicException<T extends Object>(Future<dynamic> Function() handler) async {
+    try {
+      final res = await handler();
+      return Right(res);
+    } catch (ex) {
+      String message = '';
+      String identifier = '';
+      int statusCode = 0;
+      switch (ex.runtimeType) {
+        case SocketException:
+          ex as SocketException;
+          message = 'unable to connect to the server.';
+          statusCode = 0;
+          identifier = 'Socket Exception ${ex.message}\n';
+          break;
+
+        default:
+          message = 'unknown error occurred';
+          statusCode = 0;
+          identifier = 'unknown error ${ex.toString()}\n';
+          break;
+      }
+      return Left(AppException(
+          message: message, statusCode: statusCode, identifier: identifier,which: 'http'));
+    }
+  }
 }
