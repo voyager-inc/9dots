@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:ninedots/core/di/di_container.dart';
 import 'package:ninedots/core/router/app_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ninedots/presentation/pages/splash/presentation/screens/splash_screen.dart';
+import 'package:ninedots/presentation/pages/initializations/splash/presentation/screens/splash_screen.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env.dev");
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
