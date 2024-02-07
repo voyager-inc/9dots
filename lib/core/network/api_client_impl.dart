@@ -12,11 +12,8 @@ import 'package:ninedots/data/models/response/response.dart';
 import 'api_client.dart';
 import 'exception/api_handler_mixin.dart';
 
-@Injectable(as: ApiClient)
 class ApiClientImpl extends ApiClient with ExceptionHandlerMixin {
-  ApiClientImpl({required this.amplifyConfig}) {
-    configureAmplify();
-  }
+  ApiClientImpl({required this.amplifyConfig});
 
   final String amplifyConfig;
 
