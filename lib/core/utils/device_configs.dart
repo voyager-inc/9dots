@@ -4,15 +4,9 @@ import 'dart:io';
 import 'package:ninedots/core/constants/app_sizes.dart';
 
 class DeviceConfigs {
-  static final DeviceConfigs _instance = DeviceConfigs._init();
-
-  factory DeviceConfigs() {
-    return _instance;
-  }
-
   late MediaQueryData appMediaQueryData;
 
-  DeviceConfigs._init() {
+  DeviceConfigs() {
     appMediaQueryData = MediaQueryData.fromView(
         WidgetsBinding.instance.platformDispatcher.views.single,
     );
