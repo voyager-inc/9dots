@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ninedots/core/network/api_client.dart';
-import 'package:ninedots/core/network/api_client_impl.dart';
 import 'package:ninedots/core/utils/device_configs.dart';
 
 import 'di_container.config.dart';
@@ -13,10 +12,4 @@ Future<void> configureDependencies() async {
   locator.init();
   locator.registerLazySingleton<DeviceConfigs>(() => DeviceConfigs());
   await locator<ApiClient>().configureAmplify();
-}
-
-@module
-abstract class InjectableModule {
-  @singleton
-  ApiClient get apiClient => ApiClientImpl(amplifyConfig: "");
 }
