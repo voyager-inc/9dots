@@ -19,4 +19,10 @@ class AuthRemoteDatasourceImpl extends AuthRemoteDatasource {
       },
     );
   }
+
+  @override
+  Future<Either<AppException, bool>> cognitoSignin(String username, String password) async {
+    final response = await apiClient.signin(username, password);
+    return response.fold((l) => Left(l), (result) => Right(result));
+  }
 }

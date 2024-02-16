@@ -11,6 +11,10 @@ abstract class ApiClient {
 
   Future<Either<AppException, dynamic>> fetchSession();
 
+  Future<Either<AppException, bool>> signin(String username, String password);
+
+  Future<Either<AppException, bool>> signout();
+
   Future<Either<AppException, Response>> query(String document, {Map<String, dynamic>? variables});
 
   Future<Either<AppException, Response>> mutate(String document, {Map<String, dynamic>? variables});

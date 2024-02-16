@@ -51,6 +51,8 @@ dependencies:
   flutter_dotenv: ^5.1.0
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
+  connectivity_plus: ^5.0.2
+  easy_localization: ^3.0.3
 
   ## Dependency injection
   injectable: ^2.1.2
@@ -64,6 +66,7 @@ dependencies:
   auto_route: ^7.8.4
   iphone_has_notch: ^1.0.0
   cupertino_icons: ^1.0.2
+  flutter_inappwebview: ^6.0.0
 
 
 dev_dependencies:
@@ -94,6 +97,9 @@ flutter:
     - .env
     - assets/
     - assets/images/
+    - assets/icons/
+    - assets/translations/
+    - assets/fonts/
     - lib/configs/amplify_configs/dev/
     - lib/configs/amplify_configs/prod/
     - lib/configs/amplify_configs/stg/

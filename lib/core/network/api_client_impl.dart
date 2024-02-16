@@ -76,4 +76,25 @@ class ApiClientImpl extends ApiClient with ExceptionHandlerMixin {
 
     return res;
   }
+
+  @override
+  Future<Either<AppException, bool>> signin(String username, String password) async {
+    final result = await handleDynamicException(() async {
+      return await Amplify.Auth.signIn(
+        username: username,
+        password: password,
+      );
+    });
+
+    return result.fold((l) => Left(l), (r) {
+      final SignInResult status = r as SignInResult;
+      return Right(status.isSignedIn);
+    });
+  }
+
+  @override
+  Future<Either<AppException, bool>> signout() {
+    // TODO: implement signout
+    throw UnimplementedError();
+  }
 }
