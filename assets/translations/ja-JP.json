@@ -1,0 +1,25 @@
+{
+  "registration": {
+    "introduction": "はじめに",
+    "msgIntro1": "9DOTsの利用を開始します。\n",
+    "msgIntro2": "9DOTsは",
+    "msgIntro3": "株式会社グラモ",
+    "msgIntro4" : "が提供するサービスです。",
+    "temsOfService": "利用規約",
+    "and": "と",
+    "privacyPolicy": "プライバシーポリシー",
+    "msgTemsAndPolicy": "をご確認いただき、同意の上サービスをご利用ください。",
+    "msgAgreeTemsAndPolicy": "利用規約とプライバシーポリシーに同意する。",
+    "btnNext": "次へ",
+    "navTitleRegistration": "アプリの初期登録"
+  },
+  "common": {
+    "backButtonTooltip": "戻る"
+  },
+  "term": {
+    "navTitleTemsOfUse": "利用規約"
+  },
+  "policy": {
+    "navTitlePolicy": "プライバシーポリシー"
+  }
+}

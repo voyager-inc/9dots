@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -9,6 +10,7 @@ import 'package:ninedots/presentation/pages/initializations/splash/presentation/
 void main() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await configureDependencies();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -17,7 +19,12 @@ void main() async {
   );
   runApp(
     ProviderScope(
-      child: MyApp(),
+      child: EasyLocalization(
+        supportedLocales: const [Locale('ja', 'JP')],
+        path: "assets/translations",
+        fallbackLocale: const Locale('ja', 'JP'),
+        child: MyApp(),
+      ),
     ),
   );
 }
@@ -36,6 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         child: child ?? const SplashScreen(),
       ),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter.config(),
     );
